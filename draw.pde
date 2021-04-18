@@ -1,12 +1,32 @@
 void draw() {
-  // Display
-  display();
+  // Move
+  for (Particle p : particles) { p.update(); }
+
+  // Tree
+  constructTree();
 
   // Gravity
   gravity();
 
-  // Move
-  for (Particle p : particles) { p.update(); }
+  // Display
+  display();
+}
+
+float[] getBoundingSquare() {
+  // Indices
+  float minX = particles[0].pos.x;
+  float maxX = particles[0].pos.x;
+  float minY = particles[0].pos.y;
+  float maxY = particles[0].pos.y;
+
+  for (int i = 0; i < N; i++) {
+    minX = Math.min(minX, particles[i].pos.x);
+    maxX = Math.max(maxX, particles[i].pos.x);
+    minY = Math.min(minY, particles[i].pos.y);
+    maxY = Math.max(maxY, particles[i].pos.y);
+  }
+
+  return new float[] { minX, minY, Math.max(maxX - minX, maxY - minY) };
 }
 
 void constructTree() {
@@ -14,7 +34,10 @@ void constructTree() {
   1. Get bounding square
   2. Insert nodes
   */
-  root = new TreeNode(0, 0, 0);
+  float[] boundingSquare = getBoundingSquare();
+  root = new TreeNode(boundingSquare[0], boundingSquare[1], boundingSquare[2]);
+
+  for (Particle p : particles) { root.insert(p); }
 }
 
 void display() {
@@ -30,6 +53,16 @@ void display() {
   pushMatrix();
   translate(camx, camy);
   scale(zoom);
+
+  // Particles
+  noStroke();
+  fill(255);
   for (Particle p : particles) { p.display(); }
+
+  // Quadtree
+  noFill();
+  stroke(255);
+  root.display();
+
   popMatrix();
 }

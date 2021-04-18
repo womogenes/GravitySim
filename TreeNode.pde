@@ -12,6 +12,7 @@ class TreeNode {
     this.w = w;
     this.leaf = true;
     this.particle = null;
+    this.children = new TreeNode[4];
   }
 
   void split() {
@@ -30,7 +31,7 @@ class TreeNode {
     if (v.y < y + halfWidth) {
       return v.x < x + halfWidth ? 0 : 1;
     } else {
-      return v.y < x + halfWidth ? 2 : 3;
+      return v.x < x + halfWidth ? 2 : 3;
     }
   }
 
@@ -66,5 +67,14 @@ class TreeNode {
 
     // Not a leaf
     this.children[this.which(newP.pos)].insert(newP);
+  }
+
+  void display() {
+    if (!leaf) {
+      for (TreeNode tn : children) { tn.display(); }
+    }
+
+    strokeWeight(2);
+    rect(x, y, w, w);
   }
 }

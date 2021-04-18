@@ -19,20 +19,20 @@ TreeNode root;
 
 void setup() {
   // Config
-  N = 5000;
+  N = 50;
   r = 10;
   mass = 1;
   G = 0.03; // Gravitational constant
 
   // Graphics
   size(800, 800);
-  ellipseMode(CENTER);
   fill(255);
+  stroke(255);
   noStroke();
   textAlign(RIGHT, BOTTOM);
   textSize(24);
 
-  circle = createShape(ELLIPSE, -r/2, -r/2, r, r);
+  circle = createShape(ELLIPSE, 0, 0, r, r);
 
   // Camera
   tox = width / 2;
@@ -47,7 +47,7 @@ void setup() {
   // Variables
   particles = new Particle[N];
   for (int i = 0; i < N; i++) {
-    particles[i] = new Particle(new Vector(random(-width/2, width/2), random(-height/2, height/2)), r);
+    particles[i] = new Particle(new Vector(random(-width/2, width/2), random(-height/2, height/2)));
     particles[i].vel.x = random(-1, 1);
     particles[i].vel.y = random(-1, 1);
   }
