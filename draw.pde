@@ -8,6 +8,9 @@ void draw() {
   // Gravity
   gravity();
 
+  // Collisions
+  collide();
+
   // Display
   display();
 }
@@ -58,11 +61,6 @@ void display() {
   noStroke();
   fill(255);
   for (Particle p : particles) { p.display(); }
-
-  // Quadtree
-  noFill();
-  stroke(255);
-  root.display();
 
   popMatrix();
 }

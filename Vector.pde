@@ -20,4 +20,12 @@ class Vector {
     x *= scalar;
     y *= scalar;
   }
+
+  float magSquared() {
+    return x * x + y * y;
+  }
+
+  void normalize() {
+    mult(1 / ((float) Math.sqrt(magSquared()))); // Yeah I could probably use Fast Inverse Square Root as well but ¯\_(ツ)_/¯
+  }
 }

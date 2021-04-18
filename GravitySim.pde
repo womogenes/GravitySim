@@ -3,6 +3,7 @@ int N; // Number of particles
 float r; // Radius
 float mass;
 float G;
+float restitution;
 
 /* GRAHPICS */
 PShape circle;
@@ -19,10 +20,11 @@ TreeNode root;
 
 void setup() {
   // Config
-  N = 50;
-  r = 10;
+  N = 500;
+  r = 2;
   mass = 1;
   G = 0.03; // Gravitational constant
+  restitution = 0.9;
 
   // Graphics
   size(800, 800);
@@ -32,7 +34,7 @@ void setup() {
   textAlign(RIGHT, BOTTOM);
   textSize(24);
 
-  circle = createShape(ELLIPSE, 0, 0, r, r);
+  circle = createShape(ELLIPSE, 0, 0, 2 * r, 2 * r);
 
   // Camera
   tox = width / 2;
