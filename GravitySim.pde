@@ -2,8 +2,9 @@
 int N; // Number of particles
 float r; // Radius
 
-
 /* GRAHPICS */
+PShape circle;
+
 // Camera stuff
 float camx, camy, tox, toy;
 float zoom, tozoom;
@@ -12,8 +13,13 @@ float xOffset, yOffset;
 
 /* VARIABLES */
 Particle[] particles;
+TreeNode root;
 
 void setup() {
+  // Config
+  N = 5000;
+  r = 10;
+
   // Graphics
   size(800, 800);
   ellipseMode(CENTER);
@@ -21,6 +27,8 @@ void setup() {
   noStroke();
   textAlign(RIGHT, BOTTOM);
   textSize(24);
+
+  circle = createShape(ELLIPSE, -r/2, -r/2, r, r);
 
   // Camera
   tox = width / 2;
@@ -31,10 +39,6 @@ void setup() {
   tozoom = 1;
   xOffset = 0;
   yOffset = 0;
-
-  // Config
-  N = 100000;
-  r = 1;
 
   // Variables
   particles = new Particle[N];

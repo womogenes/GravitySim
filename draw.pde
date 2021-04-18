@@ -6,6 +6,14 @@ void draw() {
   for (Particle p : particles) { p.update(); }
 }
 
+void constructTree() {
+  /*
+  1. Get bounding square
+  2. Insert nodes
+  */
+  root = new TreeNode(0, 0, 0);
+}
+
 void display() {
   background(0);
   
@@ -19,6 +27,6 @@ void display() {
   pushMatrix();
   translate(camx, camy);
   scale(zoom);
-  for (Particle p : particles) { p.display(); }
+  for (Particle p : particles) { shape(circle, p.pos.x, p.pos.y); }
   popMatrix();
 }
