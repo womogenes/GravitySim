@@ -16,7 +16,6 @@ Particle[] particles;
 void setup() {
   // Graphics
   size(800, 800);
-  frameRate(120);
   ellipseMode(CENTER);
   fill(255);
   noStroke();
@@ -34,13 +33,13 @@ void setup() {
   yOffset = 0;
 
   // Config
-  N = 100;
-  r = 10;
+  N = 100000;
+  r = 1;
 
   // Variables
   particles = new Particle[N];
   for (int i = 0; i < N; i++) {
-    particles[i] = new Particle(new Vector(random(width), random(height)), r);
+    particles[i] = new Particle(new Vector(random(-width/2, width/2), random(-height/2, height/2)), r);
     particles[i].vel.x = random(-1, 1);
     particles[i].vel.y = random(-1, 1);
   }

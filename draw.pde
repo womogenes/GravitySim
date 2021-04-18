@@ -1,5 +1,12 @@
 void draw() {
   // Display
+  display();
+
+  // Move
+  for (Particle p : particles) { p.update(); }
+}
+
+void display() {
   background(0);
   
   // Camera stuff
@@ -14,7 +21,4 @@ void draw() {
   scale(zoom);
   for (Particle p : particles) { p.display(); }
   popMatrix();
-
-  // Move
-  for (Particle p : particles) { p.update(); }
 }
