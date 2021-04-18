@@ -14,6 +14,6 @@ class Particle {
   }
 
   void display() {
-    ellipse(this.pos.x, this.pos.y, this.r, this.r);
+    shape(circle, this.pos.x, this.pos.y);
   }
 }

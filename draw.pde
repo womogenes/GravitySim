@@ -27,6 +27,6 @@ void display() {
   pushMatrix();
   translate(camx, camy);
   scale(zoom);
-  for (Particle p : particles) { shape(circle, p.pos.x, p.pos.y); }
+  for (Particle p : particles) { p.display(); }
   popMatrix();
 }
