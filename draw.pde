@@ -2,6 +2,9 @@ void draw() {
   // Display
   display();
 
+  // Gravity
+  gravity();
+
   // Move
   for (Particle p : particles) { p.update(); }
 }

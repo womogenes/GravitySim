@@ -11,6 +11,11 @@ class Vector {
     y += b.y;
   }
 
+  void sub(Vector b) {
+    x -= b.x;
+    y -= b.y;
+  }
+
   void mult(float scalar) {
     x *= scalar;
     y *= scalar;

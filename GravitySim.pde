@@ -1,6 +1,8 @@
 /* CONFIG */
 int N; // Number of particles
 float r; // Radius
+float mass;
+float G;
 
 /* GRAHPICS */
 PShape circle;
@@ -19,6 +21,8 @@ void setup() {
   // Config
   N = 5000;
   r = 10;
+  mass = 1;
+  G = 0.03; // Gravitational constant
 
   // Graphics
   size(800, 800);
