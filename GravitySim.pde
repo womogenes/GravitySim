@@ -25,7 +25,7 @@ TreeNode root;
 
 void setup() {
   // Config
-  N = 1000;
+  N = 1;
   r = 2;
   mass = 1;
   G = 0.01; // Gravitational constant

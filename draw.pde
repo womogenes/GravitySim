@@ -23,10 +23,10 @@ void draw() {
 
 float[] getBoundingSquare() {
   // Indices
-  float minX = particles.get(0).pos.x;
-  float maxX = particles.get(0).pos.x;
-  float minY = particles.get(0).pos.y;
-  float maxY = particles.get(0).pos.y;
+  float minX = Float.MAX_VALUE;
+  float maxX = -Float.MAX_VALUE;
+  float minY = Float.MAX_VALUE;
+  float maxY = -Float.MAX_VALUE;
 
   for (int i = 0; i < N; i++) {
     minX = Math.min(minX, particles.get(i).pos.x);
@@ -57,8 +57,8 @@ void display() {
   camy = lerp(camy, toy, .1);
   zoom = lerp(zoom, tozoom, .1);
 
-  text(frameRate, width - 20, height - 20);
-  text(restitution, width - 20, height - 60);
+  text(nf(frameRate, 2, 1) + " fps", width - 20, height - 20);
+  text("N=" + N, width - 20, height - 60);
 
   pushMatrix();
   translate(camx, camy);
