@@ -2,6 +2,15 @@
 // Blank for now
 
 void gravity() {
+  for (Particle a : particles) {
+    for (Particle b : particles) {
+      if (a == b) continue;
+      a.vel.add(gravityForce(b.pos, a.pos, mass, mass));
+    }
+  }
+}
+
+void gravity_barnes_hut() {
   for (Particle p : particles) {
     gravitate(p, root);
   }

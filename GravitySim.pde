@@ -6,6 +6,7 @@ float G;
 float theta;
 float restitution;
 float initBounds;
+float initVel;
 
 /* GRAHPICS */
 PShape circle;
@@ -25,14 +26,14 @@ void setup() {
   N = 1000;
   r = 2;
   mass = 1;
-  G = 0.3; // Gravitational constant
-  theta = 0.5; // Constant used for Barnes-Hut
-  restitution = 0.2;
+  G = 0.01; // Gravitational constant
+  theta = 1; // Constant used for Barnes-Hut
+  restitution = 0.1;
   initBounds = width / 2;
 
   // Graphics
   size(800, 800, P2D);
-  frameRate(120);
+  frameRate(60);
   fill(255);
   stroke(255);
   strokeWeight(2 * r); //noStroke();
@@ -55,7 +56,7 @@ void setup() {
   particles = new Particle[N];
   for (int i = 0; i < N; i++) {
     particles[i] = new Particle(new Vector(random(-initBounds, initBounds), random(-initBounds, initBounds)));
-    particles[i].vel.x = random(-1, 1);
-    particles[i].vel.y = random(-1, 1);
+    particles[i].vel.x = random(-initVel, initVel);
+    particles[i].vel.y = random(-initVel, initVel);
   }
 }
