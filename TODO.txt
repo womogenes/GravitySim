@@ -1,0 +1,6 @@
+REALIZATIONS
+- Collisions are fixed
+- Barnes-Hut is off
+
+THINGS TO FIX
+- Check quadtree centers of mass

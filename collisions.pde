@@ -15,8 +15,8 @@ void collide(Particle p, TreeNode tn) {
 
   // Find which quadrant to collide with
   for (TreeNode child : tn.children) {
-    boolean outside = p.pos.x + r < child.x || p.pos.x - r > child.x + child.w
-                   || p.pos.y + r < child.y || p.pos.y - r > child.y + child.w;
+    boolean outside = p.pos.x + 2 * r < child.x || p.pos.x - 2 * r > child.x + child.w
+                   || p.pos.y + 2 * r < child.y || p.pos.y - 2 * r > child.y + child.w;
     if (!outside) { collide(p, child); }
   }
 }
