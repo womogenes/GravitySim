@@ -23,17 +23,18 @@ TreeNode root;
 
 void setup() {
   // Config
-  N = 500;
+  N = 1000;
   r = 2;
   mass = 1;
-  G = 0.01; // Gravitational constant
-  theta = 0; // Constant used for Barnes-Hut
-  restitution = 0.1;
+  G = 0.2; // Gravitational constant
+  theta = 0.5; // Constant used for Barnes-Hut
+  restitution = 0.9;
   initBounds = width / 2;
+  initVel = 0.1;
 
   // Graphics
   size(800, 800, P2D);
-  frameRate(60);
+  frameRate(120);
   noFill();
   stroke(255);
   strokeWeight(2 * r); //noStroke();
