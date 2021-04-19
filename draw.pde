@@ -20,16 +20,16 @@ void draw() {
 
 float[] getBoundingSquare() {
   // Indices
-  float minX = particles[0].pos.x;
-  float maxX = particles[0].pos.x;
-  float minY = particles[0].pos.y;
-  float maxY = particles[0].pos.y;
+  float minX = particles.get(0).pos.x;
+  float maxX = particles.get(0).pos.x;
+  float minY = particles.get(0).pos.y;
+  float maxY = particles.get(0).pos.y;
 
   for (int i = 0; i < N; i++) {
-    minX = Math.min(minX, particles[i].pos.x);
-    maxX = Math.max(maxX, particles[i].pos.x);
-    minY = Math.min(minY, particles[i].pos.y);
-    maxY = Math.max(maxY, particles[i].pos.y);
+    minX = Math.min(minX, particles.get(i).pos.x);
+    maxX = Math.max(maxX, particles.get(i).pos.x);
+    minY = Math.min(minY, particles.get(i).pos.y);
+    maxY = Math.max(maxY, particles.get(i).pos.y);
   }
 
   return new float[] { minX, minY, Math.max(maxX - minX, maxY - minY) };

@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /* CONFIG */
 int N; // Number of particles
 float r; // Radius
@@ -18,7 +20,7 @@ float dzoom = 0.5; // Change in zoom amount
 float xOffset, yOffset;
 
 /* VARIABLES */
-Particle[] particles;
+ArrayList<Particle> particles;
 TreeNode root;
 
 void setup() {
@@ -54,10 +56,11 @@ void setup() {
   yOffset = 0;
 
   // Variables
-  particles = new Particle[N];
+  particles = new ArrayList(N * 2);
   for (int i = 0; i < N; i++) {
-    particles[i] = new Particle(new Vector(random(-initBounds, initBounds), random(-initBounds, initBounds)));
-    particles[i].vel.x = random(-initVel, initVel);
-    particles[i].vel.y = random(-initVel, initVel);
+    Particle newP = new Particle(new Vector(random(-initBounds, initBounds), random(-initBounds, initBounds)));
+    newP.vel.x = random(-initVel, initVel);
+    newP.vel.y = random(-initVel, initVel);
+    particles.add(newP);
   }
 }
