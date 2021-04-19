@@ -18,7 +18,7 @@ void gravity_barnes_hut() {
 
 Vector gravityForce(Vector a, Vector b, float m_a, float m_b) {
   if (a.equals(b)) return new Vector(0, 0);
-  return mult(sub(a, b), G * m_a * m_b / distSquared(a, b));
+  return mult(sub(a, b), G * m_b / distSquared(a, b));
 }
 
 void gravitate(Particle p, TreeNode tn) {
