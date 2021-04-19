@@ -27,14 +27,14 @@ void setup() {
   r = 2;
   mass = 1;
   G = 0.01; // Gravitational constant
-  theta = 0.3; // Constant used for Barnes-Hut
+  theta = 0; // Constant used for Barnes-Hut
   restitution = 0.1;
   initBounds = width / 2;
 
   // Graphics
   size(800, 800, P2D);
   frameRate(60);
-  fill(255);
+  noFill();
   stroke(255);
   strokeWeight(2 * r); //noStroke();
   textAlign(RIGHT, BOTTOM);

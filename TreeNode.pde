@@ -51,25 +51,25 @@ class TreeNode {
         Particle a = this.particle;
         Particle b = newP;
 
+        this.totalCenter.add(b.pos);
+        this.totalMass += mass;
+        this.count++;
+
         TreeNode cur = this;
         int qA = cur.which(a.pos);
         int qB = cur.which(b.pos);
         while (qA == qB) {
-          // Update total center and mass
-          cur.totalCenter.add(a.pos);
-          cur.totalCenter.add(b.pos);
-          cur.totalMass += mass * 2;
-
           cur.split();
           cur = cur.children[qA];
           qA = cur.which(a.pos);
           qB = cur.which(b.pos);
+          
+          // Update total center and mass
+          cur.totalCenter.add(a.pos);
+          cur.totalCenter.add(b.pos);
+          cur.totalMass += mass * 2;
+          cur.count += 2;
         }
-
-        cur.totalMass += mass * 2;
-        cur.totalCenter.add(a.pos);
-        cur.totalCenter.add(b.pos);
-        cur.count += 2;
 
         cur.split();
         cur.children[qA].particle = a;
@@ -79,7 +79,7 @@ class TreeNode {
         cur.children[qA].totalCenter.add(a.pos);
         cur.children[qB].totalCenter.add(b.pos);
         cur.children[qA].totalMass += mass;
-        cur.children[qA].totalMass += mass;
+        cur.children[qB].totalMass += mass;
         cur.children[qA].count++;
         cur.children[qB].count++;
 
@@ -95,17 +95,39 @@ class TreeNode {
     }
 
     // Not a leaf
-    this.count++;
     this.totalCenter.add(newP.pos);
+    this.totalMass += mass;
+    this.count++;
     this.children[this.which(newP.pos)].insert(newP);
   }
 
   void display() {
+    if (this.w < 100) {
+      if (!this.leaf && this.count == 0) {
+        strokeWeight(1);
+        fill(255, 100);
+        ellipse(x, y, 10, 10);
+      } else {
+        stroke(255);
+        noFill();
+      }
+      rect(x, y, w, w);
+
+      //textSize(12);
+      //text(this.count, x + w/2, y + w/2);
+
+      /*
+      this.center = mult(this.totalCenter, 1 / this.count);
+      if (this.center != null) {
+        println("hello");
+        stroke(255, 0, 0);
+        point(this.center.x, this.center.y);
+      }
+      */
+    }
+
     if (!leaf) {
       for (TreeNode tn : children) { tn.display(); }
     }
-
-    strokeWeight(2);
-    rect(x, y, w, w);
   }
 }

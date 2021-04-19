@@ -5,3 +5,4 @@ REALIZATIONS
 
 THINGS TO FIX
 - Check quadtree centers of mass
+- Check against naive algorithm

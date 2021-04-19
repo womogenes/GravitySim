@@ -62,9 +62,15 @@ void display() {
   scale(zoom);
 
   // Particles
-  //noStroke();
-  //fill(255);
+  strokeWeight(2 * r);
   for (Particle p : particles) { p.display(); }
+
+  // Quadtree
+  /*
+  textAlign(CENTER, CENTER);
+  strokeWeight(0.5);
+  root.display();
+  */
 
   popMatrix();
 }
