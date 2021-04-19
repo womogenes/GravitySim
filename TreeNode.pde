@@ -103,27 +103,26 @@ class TreeNode {
 
   void display() {
     if (this.w < 100) {
+      if (this.leaf) return;
       if (!this.leaf && this.count == 0) {
-        strokeWeight(1);
         fill(255, 100);
         ellipse(x, y, 10, 10);
       } else {
         stroke(255);
         noFill();
       }
+      strokeWeight(1);
       rect(x, y, w, w);
 
-      //textSize(12);
-      //text(this.count, x + w/2, y + w/2);
+      textSize(12);
+      text(this.count, x + w/2, y + w/2);
 
-      /*
-      this.center = mult(this.totalCenter, 1 / this.count);
+      this.center = mult(this.totalCenter, 1.0f / this.count);
       if (this.center != null) {
-        println("hello");
         stroke(255, 0, 0);
+        strokeWeight(10);
         point(this.center.x, this.center.y);
       }
-      */
     }
 
     if (!leaf) {

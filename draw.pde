@@ -63,6 +63,7 @@ void display() {
 
   // Particles
   strokeWeight(2 * r);
+  stroke(255);
   for (Particle p : particles) { p.display(); }
 
   // Quadtree
