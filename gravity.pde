@@ -29,7 +29,7 @@ void gravitate(Particle p, TreeNode tn) {
   }
 
   if (tn.center == null) { tn.center = mult(tn.totalCenter, 1 / tn.count); }
-  if (tn.w / dist(p.pos, tn.center) > theta) {
+  if (tn.w / dist(p.pos, tn.center) < theta) {
     p.vel.add(gravityForce(tn.center, p.pos, mass, tn.totalMass));
     return;
   }

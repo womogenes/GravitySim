@@ -1,6 +1,7 @@
 REALIZATIONS
 - Collisions are fixed
 - Barnes-Hut is off
+- gravityForce is fine
 
 THINGS TO FIX
 - Check quadtree centers of mass
