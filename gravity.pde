@@ -1,23 +1,29 @@
 // Gravity algorithm
 // Blank for now
 
-// Gravity algorithm
-// Naive
-
 void gravity() {
-  for (int i = 0; i < N; i++) {
-    for (int j = i + 1; j < N; j++) {
-      if (i == j) continue;
-
-      Particle a = particles[i];
-      Particle b = particles[j];
-
-      float dist = distSquared(a.pos, b.pos);
-      Vector force = sub(a.pos, b.pos);
-      force.mult(G / dist);
-
-      a.vel.sub(force);
-      b.vel.add(force);
-    }
+  for (Particle p : particles) {
+    gravitate(p, root);
   }
+}
+
+Vector gravityForce(Vector a, Vector b, float m_a, float m_b) {
+  if (a.equals(b)) return new Vector(0, 0);
+  return mult(sub(a, b), G * m_a * m_b / distSquared(a, b));
+}
+
+void gravitate(Particle p, TreeNode tn) {
+  if (tn.leaf) {
+    if (tn.particle == null || p == tn.particle) return;
+    p.vel.add(gravityForce(tn.particle.pos, p.pos, mass, mass));
+    return;
+  }
+
+  if (tn.center == null) { tn.center = mult(tn.totalCenter, 1 / tn.count); }
+  if (tn.w / dist(p.pos, tn.center) > theta) {
+    p.vel.add(gravityForce(tn.center, p.pos, mass, tn.totalMass));
+    return;
+  }
+
+  for (TreeNode child : tn.children) gravitate(p, child);
 }

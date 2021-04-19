@@ -3,7 +3,9 @@ int N; // Number of particles
 float r; // Radius
 float mass;
 float G;
+float theta;
 float restitution;
+float initBounds;
 
 /* GRAHPICS */
 PShape circle;
@@ -20,17 +22,20 @@ TreeNode root;
 
 void setup() {
   // Config
-  N = 2000;
+  N = 1000;
   r = 2;
   mass = 1;
-  G = 0.003; // Gravitational constant
+  G = 0.3; // Gravitational constant
+  theta = 0.5; // Constant used for Barnes-Hut
   restitution = 0.2;
+  initBounds = width / 2;
 
   // Graphics
   size(800, 800, P2D);
+  frameRate(120);
   fill(255);
   stroke(255);
-  noStroke();
+  strokeWeight(2 * r); //noStroke();
   textAlign(RIGHT, BOTTOM);
   textSize(24);
 
@@ -49,7 +54,7 @@ void setup() {
   // Variables
   particles = new Particle[N];
   for (int i = 0; i < N; i++) {
-    particles[i] = new Particle(new Vector(random(-width/2, width/2), random(-height/2, height/2)));
+    particles[i] = new Particle(new Vector(random(-initBounds, initBounds), random(-initBounds, initBounds)));
     particles[i].vel.x = random(-1, 1);
     particles[i].vel.y = random(-1, 1);
   }

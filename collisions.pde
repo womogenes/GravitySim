@@ -6,8 +6,7 @@ void collide() {
 void collide(Particle p, TreeNode tn) {
   // Collide with a particle
   if (tn.leaf) {
-    if (tn.particle == null) return;
-    if (p == tn.particle) return;
+    if (tn.particle == null || p == tn.particle) return;
 
     float dist = dist(p.pos, tn.particle.pos);
     collide(p, tn.particle, dist);

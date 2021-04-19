@@ -8,10 +8,10 @@ class Particle {
   }
 
   void update() {
-    this.pos.add(this.vel);
+    pos.add(vel);
   }
 
   void display() {
-    shape(circle, this.pos.x, this.pos.y);
+    point(pos.x, pos.y);
   }
 }

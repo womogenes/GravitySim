@@ -59,8 +59,8 @@ void display() {
   scale(zoom);
 
   // Particles
-  noStroke();
-  fill(255);
+  //noStroke();
+  //fill(255);
   for (Particle p : particles) { p.display(); }
 
   popMatrix();

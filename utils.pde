@@ -23,17 +23,11 @@ float dot(Vector a, Vector b) {
 }
 
 // From https://stackoverflow.com/questions/11513344/how-to-implement-the-fast-inverse-square-root-in-java
-/*
-float invsqrt(float number) {
-  float x = number;
+public static float invSqrt(float x) {
   float xhalf = 0.5f * x;
-  long i = Float.floatToLongBits(x);
-  i = 0x5fe6ec85e7de30daL - (i >> 1);
-  x = Float.longBitsTofloat(i);
-  for (int it = 0; it < 4; it++){
-    x = x * (1.5d - xhalf * x * x);
-  }
-  x *= number;
+  int i = Float.floatToIntBits(x);
+  i = 0x5f3759df - (i >> 1);
+  x = Float.intBitsToFloat(i);
+  x *= (1.5f - xhalf * x * x);
   return x;
 }
-*/

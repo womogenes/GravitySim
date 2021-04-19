@@ -6,6 +6,8 @@ class Vector {
     this.y = y;
   }
 
+  boolean equals(Vector other) { return x == other.x && y == other.y; }
+
   void add(Vector b) {
     x += b.x;
     y += b.y;
@@ -26,6 +28,6 @@ class Vector {
   }
 
   void normalize() {
-    mult(1 / ((float) Math.sqrt(magSquared()))); // Yeah I could probably use Fast Inverse Square Root as well but ¯\_(ツ)_/¯
+    mult(1 / ((float) Math.sqrt(magSquared())));
   }
 }
