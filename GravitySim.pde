@@ -20,14 +20,14 @@ TreeNode root;
 
 void setup() {
   // Config
-  N = 500;
+  N = 2000;
   r = 2;
   mass = 1;
-  G = 0.03; // Gravitational constant
-  restitution = 0.9;
+  G = 0.003; // Gravitational constant
+  restitution = 0.2;
 
   // Graphics
-  size(800, 800);
+  size(800, 800, P2D);
   fill(255);
   stroke(255);
   noStroke();

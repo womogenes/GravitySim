@@ -52,6 +52,7 @@ void display() {
   zoom = lerp(zoom, tozoom, .1);
 
   text(frameRate, width - 20, height - 20);
+  text(restitution, width - 20, height - 60);
 
   pushMatrix();
   translate(camx, camy);

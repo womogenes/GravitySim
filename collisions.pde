@@ -1,19 +1,30 @@
 // Collisions
 void collide() {
-  // Naive for now
-  for (Particle i : particles) { 
-    for (Particle j : particles) {
-      if (i == j) continue;
+  for (Particle p : particles) { collide(p, root); }
+}
 
-      float dist = dist(i.pos, j.pos);
-      if (dist <= 2 * r) {
-        collide(i, j, dist);
-      }
-    }
+void collide(Particle p, TreeNode tn) {
+  // Collide with a particle
+  if (tn.leaf) {
+    if (tn.particle == null) return;
+    if (p == tn.particle) return;
+
+    float dist = dist(p.pos, tn.particle.pos);
+    collide(p, tn.particle, dist);
+    return;
+  }
+
+  // Find which quadrant to collide with
+  for (TreeNode child : tn.children) {
+    boolean outside = p.pos.x + r < child.x || p.pos.x - r > child.x + child.w
+                   || p.pos.y + r < child.y || p.pos.y - r > child.y + child.w;
+    if (!outside) { collide(p, child); }
   }
 }
 
 void collide(Particle a, Particle b, float dist) {
+  if (dist > 2 * r) return;
+
   Vector dPos = sub(a.pos, b.pos);
   dPos.normalize();
 
