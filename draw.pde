@@ -2,6 +2,9 @@ void draw() {
   // Customize config variables
   //restitution = (float) mouseX / width;
 
+  // Inputs
+  inputLoop();
+
   // Move
   for (Particle p : particles) { p.update(); }
 

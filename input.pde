@@ -1,11 +1,9 @@
 void mouseDragged() {
-  tox = (mouseX - xOffset);
-  toy = (mouseY - yOffset);
+  if (mouseButton == RIGHT) { updateCam(); return; }
 };
 
 void mousePressed() {
-  xOffset = mouseX - camx;
-  yOffset = mouseY - camy;
+  if (mouseButton == RIGHT) { setCamOffsets(); return; }
 };
 
 void mouseWheel(MouseEvent event) {
@@ -22,3 +20,33 @@ void mouseWheel(MouseEvent event) {
     tozoom /= dzoom + 1;
   }
 };
+
+void inputLoop() {
+  if (mousePressed) {
+    if (mouseButton == LEFT) {
+      println("hallelujah!");
+      createParticle(
+        new Vector((mouseX - camx) / zoom, (mouseY - camy) / zoom),
+        new Vector(0, 0)
+      );
+      return;
+    }
+  }
+}
+
+void createParticle(Vector pos, Vector vel) {
+  Particle newP = new Particle(pos);
+  newP.vel = vel;
+  particles.add(newP);
+  N++;
+}
+
+void updateCam() {
+  tox = (mouseX - xOffset);
+  toy = (mouseY - yOffset);
+}
+
+void setCamOffsets() {
+  xOffset = mouseX - camx;
+  yOffset = mouseY - camy;
+}
