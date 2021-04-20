@@ -78,3 +78,9 @@ void display() {
 
   popMatrix();
 }
+
+// Interpolate from green to red given an input between 0 and 1
+// From https://stackoverflow.com/questions/6394304/algorithm-how-do-i-fade-from-red-to-green-via-yellow-using-rgb-values
+color getColor(float x) {
+  return color(500 * x, 500 * (1 - x), 0);
+}

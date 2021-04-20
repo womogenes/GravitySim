@@ -27,6 +27,10 @@ class Vector {
     return x * x + y * y;
   }
 
+  float mag() {
+    return (float) Math.sqrt(magSquared());
+  }
+
   void normalize() {
     mult(1 / ((float) Math.sqrt(magSquared())));
   }

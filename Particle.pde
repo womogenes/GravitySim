@@ -12,6 +12,7 @@ class Particle {
   }
 
   void display() {
+    stroke(getColor(vel.mag() / 10));
     point(pos.x, pos.y);
   }
 }
