@@ -37,7 +37,4 @@ void collide(Particle a, Particle b, float dist) {
   Vector force = mult(dPos, dot(sub(a.vel, b.vel), dPos) * restitution);
   a.vel.sub(force);
   b.vel.add(force);
-
-  //a.vel.mult(0.999);
-  //b.vel.mult(0.999);
 }
