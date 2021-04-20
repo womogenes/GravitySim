@@ -6,22 +6,32 @@ void gravity() {
   }
 }
 
-Vector gravityForce(Vector a, Vector b, float m_a, float m_b) {
+// Naive
+void _gravity() {
+  for (Particle a : particles) {
+    for (Particle b : particles) {
+      a.nextVel.sub(gravityForce(a.pos, b.pos, mass));
+      b.nextVel.sub(gravityForce(b.pos, a.pos, mass));
+    }
+  }
+}
+
+Vector gravityForce(Vector a, Vector b, float m_b) {
   if (a.equals(b)) return new Vector(0, 0);
-  //REALISTIC return mult(sub(a, b), G * m_b / (distSquared(a, b) * (float) Math.sqrt(distSquared(a, b) + 1)));
+  //return mult(sub(a, b), G * m_b / (distSquared(a, b) * (float) Math.sqrt(distSquared(a, b) + 1)));
   return mult(sub(a, b), G * m_b / (distSquared(a, b)));
 }
 
 void gravitate(Particle p, TreeNode tn) {
   if (tn.leaf) {
     if (tn.particle == null || p == tn.particle) return;
-    p.vel.add(gravityForce(tn.particle.pos, p.pos, mass, mass));
+    p.nextVel.add(gravityForce(tn.particle.pos, p.pos, mass));
     return;
   }
 
   if (tn.center == null) { tn.center = mult(tn.totalCenter, 1.0f / tn.count); }
   if (tn.w / dist(p.pos, tn.center) < theta) {
-    p.vel.add(gravityForce(tn.center, p.pos, mass, tn.totalMass));
+    p.nextVel.add(gravityForce(tn.center, p.pos, tn.totalMass));
     return;
   }
 

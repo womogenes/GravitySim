@@ -19,18 +19,21 @@ float zoom, tozoom;
 float dzoom = 0.5; // Change in zoom amount
 float xOffset, yOffset;
 
+// Interface stuff
+int everyInsert; // One particle inserted every this many frames
+
 /* VARIABLES */
 ArrayList<Particle> particles;
 TreeNode root;
 
 void setup() {
   // Config
-  N = 1;
+  N = 1000;
   r = 2;
   mass = 1;
-  G = 0.01; // Gravitational constant
+  G = 0.02; // Gravitational constant
   theta = 0.7; // Constant used for Barnes-Hut
-  restitution = 0.9;
+  restitution = 0.1;
   initBounds = width / 2;
   initVel = 0.1;
 
@@ -54,6 +57,9 @@ void setup() {
   tozoom = 1;
   xOffset = 0;
   yOffset = 0;
+
+  // Interface
+  everyInsert = 2;
 
   // Variables
   particles = new ArrayList(N * 2);

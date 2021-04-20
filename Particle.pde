@@ -1,16 +1,22 @@
 class Particle {
   Vector pos;
   Vector vel;
+  Vector nextPos;
+  Vector nextVel;
   float heat;
 
   public Particle(Vector pos) {
     this.pos = pos;
     this.vel = new Vector(0, 0);
     this.heat = 1;
+    this.nextPos = pos.copy();
+    this.nextVel = vel.copy();
   }
 
   void update() {
-    pos.add(vel);
+    nextPos.add(vel);
+    pos = nextPos.copy();
+    vel = nextVel.copy();
     this.heat *= 0.99;
   }
 

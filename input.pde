@@ -23,7 +23,7 @@ void mouseWheel(MouseEvent event) {
 
 void inputLoop() {
   if (mousePressed) {
-    if (mouseButton == LEFT) {
+    if (mouseButton == LEFT && frameCount % everyInsert == 0) {
       createParticle(
         new Vector((mouseX - camx) / zoom, (mouseY - camy) / zoom),
         new Vector(0, 0)

@@ -6,6 +6,10 @@ class Vector {
     this.y = y;
   }
 
+  Vector copy() {
+    return new Vector(x, y);
+  }
+
   boolean equals(Vector other) { return x == other.x && y == other.y; }
 
   void add(Vector b) {
