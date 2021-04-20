@@ -8,8 +8,8 @@ void gravity() {
 
 Vector gravityForce(Vector a, Vector b, float m_a, float m_b) {
   if (a.equals(b)) return new Vector(0, 0);
-  //REALISTIC return mult(sub(a, b), G * m_b / (distSquared(a, b) * (float) Math.sqrt(distSquared(a, b) + 1)));
-  return mult(sub(a, b), G * m_b / (distSquared(a, b)));
+  return mult(sub(a, b), G * m_b / (distSquared(a, b) * (float) Math.sqrt(distSquared(a, b) + 1)) * dt);
+  // /return mult(sub(a, b), G * m_b / (distSquared(a, b)));
 }
 
 void gravitate(Particle p, TreeNode tn) {

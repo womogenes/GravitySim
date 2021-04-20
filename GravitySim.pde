@@ -9,6 +9,7 @@ float theta;
 float restitution;
 float initBounds;
 float initVel;
+float dt; // Timestep
 
 /* GRAHPICS */
 PShape circle;
@@ -25,7 +26,7 @@ TreeNode root;
 
 void setup() {
   // Config
-  N = 1;
+  N = 1000;
   r = 2;
   mass = 1;
   G = 0.01; // Gravitational constant
@@ -33,6 +34,7 @@ void setup() {
   restitution = 0.9;
   initBounds = width / 2;
   initVel = 0.1;
+  dt = 2;
 
   // Graphics
   size(800, 800, P2D);

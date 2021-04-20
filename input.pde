@@ -25,7 +25,7 @@ void inputLoop() {
   if (mousePressed) {
     if (mouseButton == LEFT) {
       createParticle(
-        new Vector((mouseX - camx) / zoom, (mouseY - camy) / zoom),
+        new Vector((mouseX - camx) / zoom + random(-1, 1), (mouseY - camy) / zoom),
         new Vector(0, 0)
       );
       return;
