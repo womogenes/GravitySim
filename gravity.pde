@@ -10,8 +10,8 @@ void gravity() {
 void _gravity() {
   for (Particle a : particles) {
     for (Particle b : particles) {
-      a.nextVel.sub(gravityForce(a.pos, b.pos, mass));
-      b.nextVel.sub(gravityForce(b.pos, a.pos, mass));
+      a.vel.sub(gravityForce(a.pos, b.pos, mass));
+      b.vel.sub(gravityForce(b.pos, a.pos, mass));
     }
   }
 }
@@ -25,13 +25,13 @@ Vector gravityForce(Vector a, Vector b, float m_b) {
 void gravitate(Particle p, TreeNode tn) {
   if (tn.leaf) {
     if (tn.particle == null || p == tn.particle) return;
-    p.nextVel.add(gravityForce(tn.particle.pos, p.pos, mass));
+    p.vel.add(gravityForce(tn.particle.pos, p.pos, mass));
     return;
   }
 
   if (tn.center == null) { tn.center = mult(tn.totalCenter, 1.0f / tn.count); }
   if (tn.w / dist(p.pos, tn.center) < theta) {
-    p.nextVel.add(gravityForce(tn.center, p.pos, tn.totalMass));
+    p.vel.add(gravityForce(tn.center, p.pos, tn.totalMass));
     return;
   }
 
