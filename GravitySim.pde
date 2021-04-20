@@ -29,7 +29,7 @@ TreeNode root;
 
 void setup() {
   // Config
-  N = 1000;
+  N = 1;
   r = 2;
   mass = 1;
   G = 0.005; // Gravitational constant
@@ -61,14 +61,16 @@ void setup() {
   yOffset = 0;
 
   // Interface
-  everyInsert = 2;
+  everyInsert = 30;
 
   // Variables
   particles = new ArrayList(N * 2);
   for (int i = 0; i < N; i++) {
-    Particle newP = new Particle(new Vector(random(-initBounds, initBounds), random(-initBounds, initBounds)));
-    newP.vel.x = random(-initVel, initVel);
-    newP.vel.y = random(-initVel, initVel);
-    particles.add(newP);
+    particles.add(
+      new Particle(
+        new Vector(random(-initBounds, initBounds), random(-initBounds, initBounds)),
+        new Vector(random(-initVel, initVel), random(-initVel, initVel))
+      )
+    );
   }
 }

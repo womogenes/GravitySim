@@ -24,17 +24,13 @@ void mouseWheel(MouseEvent event) {
 void inputLoop() {
   if (mousePressed) {
     if (mouseButton == LEFT && frameCount % everyInsert == 0) {
-      createParticle(
-        new Vector((mouseX - camx) / zoom + random(-1, 1), (mouseY - camy) / zoom),
-        new Vector(0, 0)
-      );
-      return;
+      insertSquare(screenToSpace(mouseX, mouseY), 20f);
     }
   }
 }
 
 void createParticle(Vector pos, Vector vel) {
-  Particle newP = new Particle(pos);
+  Particle newP = new Particle(pos, new Vector(0, 0));
   newP.vel = vel;
   particles.add(newP);
   N++;

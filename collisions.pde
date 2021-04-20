@@ -24,9 +24,6 @@ void collide(Particle p, TreeNode tn) {
 void collide(Particle a, Particle b, float dist) {
   if (dist > 2 * r) return;
 
-  a.heat += 0.01;
-  b.heat += 0.01;
-
   Vector dPos = sub(a.pos, b.pos);
   dPos.normalize();
 
@@ -34,7 +31,12 @@ void collide(Particle a, Particle b, float dist) {
   a.pos.add(mtd);
   b.pos.sub(mtd);
 
-  Vector force = mult(dPos, dot(sub(a.vel, b.vel), dPos) * restitution);
+  float impactSpeed = dot(sub(a.vel, b.vel), dPos);
+
+  a.heat += 0.01;
+  b.heat += 0.01;
+
+  Vector force = mult(dPos, impactSpeed * restitution);
   a.vel.sub(force);
   b.vel.add(force);
 }

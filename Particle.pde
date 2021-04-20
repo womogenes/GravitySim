@@ -3,9 +3,9 @@ class Particle {
   Vector vel;
   float heat;
 
-  public Particle(Vector pos) {
+  public Particle(Vector pos, Vector vel) {
     this.pos = pos;
-    this.vel = new Vector(0, 0);
+    this.vel = vel;
     this.heat = 1;
   }
 
@@ -15,7 +15,7 @@ class Particle {
   }
 
   void display() {
-    stroke(getColor(this.heat / 10));
+    stroke(getColor(this.heat / 15));
     point(pos.x, pos.y);
   }
 }
