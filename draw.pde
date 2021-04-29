@@ -57,24 +57,27 @@ void display() {
   camy = lerp(camy, toy, .1);
   zoom = lerp(zoom, tozoom, .1);
 
+  // Text
   text(nf(frameRate, 2, 1) + " fps", width - 20, height - 20);
   text("N=" + N, width - 20, height - 60);
 
+  /* SPACE */
   pushMatrix();
   translate(camx, camy);
   scale(zoom);
+
+  // Inserting
+  if (insertStart != null) {
+    strokeWeight(2);
+    stroke(255);
+    Vector insertEnd = screenToSpace(mouseX, mouseY);
+    line(insertStart.x, insertStart.y, insertEnd.x, insertEnd.y);
+  }
 
   // Particles
   strokeWeight(2 * r);
   stroke(255);
   for (Particle p : particles) { p.display(); }
-
-  // Quadtree
-  /*
-  textAlign(CENTER, CENTER);
-  strokeWeight(0.5);
-  root.display();
-  */
 
   popMatrix();
 }

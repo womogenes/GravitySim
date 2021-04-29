@@ -33,8 +33,8 @@ void collide(Particle a, Particle b, float dist) {
 
   float impactSpeed = dot(sub(a.vel, b.vel), dPos);
 
-  a.heat += 0.01;
-  b.heat += 0.01;
+  a.heat += abs(impactSpeed) * 0.1;
+  b.heat += abs(impactSpeed) * 0.1;
 
   Vector force = mult(dPos, impactSpeed * restitution);
   a.vel.sub(force);

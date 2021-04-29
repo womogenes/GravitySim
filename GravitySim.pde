@@ -22,6 +22,7 @@ float xOffset, yOffset;
 
 // Interface stuff
 int everyInsert; // One particle inserted every this many frames
+Vector insertStart;
 
 /* VARIABLES */
 ArrayList<Particle> particles;
@@ -32,12 +33,12 @@ void setup() {
   N = 1;
   r = 2;
   mass = 1;
-  G = 0.005; // Gravitational constant
+  G = 0.01; // Gravitational constant
   theta = 0.7; // Constant used for Barnes-Hut
   restitution = 0.9;
   initBounds = width / 2;
   initVel = 0.1;
-  dt = 2;
+  dt = 1;
 
   // Graphics
   size(800, 800, P2D);
@@ -62,9 +63,10 @@ void setup() {
 
   // Interface
   everyInsert = 30;
+  insertStart = null;
 
   // Variables
-  particles = new ArrayList(N * 2);
+  particles = new ArrayList(3000);
   for (int i = 0; i < N; i++) {
     particles.add(
       new Particle(

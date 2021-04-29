@@ -4,7 +4,12 @@ void mouseDragged() {
 
 void mousePressed() {
   if (mouseButton == RIGHT) { setCamOffsets(); return; }
+  if (mouseButton == LEFT) { setInsertStart(); return; }
 };
+
+void mouseReleased() {
+  if (mouseButton == LEFT) { insertSquare(); return; }
+}
 
 void mouseWheel(MouseEvent event) {
   float e = event.getCount();
@@ -22,26 +27,11 @@ void mouseWheel(MouseEvent event) {
 };
 
 void inputLoop() {
+  /*
   if (mousePressed) {
     if (mouseButton == LEFT && frameCount % everyInsert == 0) {
       insertSquare(screenToSpace(mouseX, mouseY), 20f);
     }
   }
-}
-
-void createParticle(Vector pos, Vector vel) {
-  Particle newP = new Particle(pos, new Vector(0, 0));
-  newP.vel = vel;
-  particles.add(newP);
-  N++;
-}
-
-void updateCam() {
-  tox = (mouseX - xOffset);
-  toy = (mouseY - yOffset);
-}
-
-void setCamOffsets() {
-  xOffset = mouseX - camx;
-  yOffset = mouseY - camy;
+  */
 }

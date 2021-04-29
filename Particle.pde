@@ -11,7 +11,7 @@ class Particle {
 
   void update() {
     pos.add(mult(vel, dt));
-    this.heat *= 0.99;
+    this.heat *= 0.999;
   }
 
   void display() {
