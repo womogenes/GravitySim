@@ -57,10 +57,6 @@ void display() {
   camy = lerp(camy, toy, .1);
   zoom = lerp(zoom, tozoom, .1);
 
-  // Text
-  text(nf(frameRate, 2, 1) + " fps", width - 20, height - 20);
-  text("N=" + N, width - 20, height - 60);
-
   /* SPACE */
   pushMatrix();
   translate(camx, camy);
@@ -80,6 +76,12 @@ void display() {
   for (Particle p : particles) { p.display(); }
 
   popMatrix();
+
+  // Text
+  text(nf(frameRate, 2, 1) + " fps", 20, height - 20);
+  text("N=" + N, 20, height - 60);
+  text("p=" + totalMomentum(), 20, height - 100);
+  text("KE=" + nf(totalKineticEnergy(), 2, 6), 20, height - 140);
 }
 
 // Interpolate from green to red given an input between 0 and 1

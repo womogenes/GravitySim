@@ -30,10 +30,10 @@ TreeNode root;
 
 void setup() {
   // Config
-  N = 1;
-  r = 2;
-  mass = 1;
-  G = 0.01; // Gravitational constant
+  N = 0;
+  r = 5;
+  mass = 5;
+  G = 0.1; // Gravitational constant
   theta = 0.7; // Constant used for Barnes-Hut
   restitution = 0.9;
   initBounds = width / 2;
@@ -46,7 +46,7 @@ void setup() {
   noFill();
   stroke(255);
   strokeWeight(2 * r); //noStroke();
-  textAlign(RIGHT, BOTTOM);
+  textAlign(LEFT, BOTTOM);
   textSize(24);
 
   circle = createShape(ELLIPSE, 0, 0, 2 * r, 2 * r);

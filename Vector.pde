@@ -6,6 +6,10 @@ class Vector {
     this.y = y;
   }
 
+  String toString() {
+    return "<" + nf(this.x, 1, 6) + ", " + nf(this.y, 1, 6) + ">";
+  }
+
   Vector copy() {
     return new Vector(x, y);
   }

@@ -1,6 +1,11 @@
 // Collisions
 void collide() {
   for (Particle p : particles) { collide(p, root); }
+
+  for (Particle p : particles) {
+    p.pos = p.nextPos;
+    p.vel = p.nextVel;
+  }
 }
 
 void collide(Particle p, TreeNode tn) {
@@ -24,19 +29,18 @@ void collide(Particle p, TreeNode tn) {
 void collide(Particle a, Particle b, float dist) {
   if (dist > 2 * r) return;
 
+  a.nextPos = a.pos.copy();
+  a.nextVel = a.vel.copy();
+
   Vector dPos = sub(a.pos, b.pos);
   dPos.normalize();
 
   Vector mtd = mult(dPos, r - dist / 2);
-  a.pos.add(mtd);
-  b.pos.sub(mtd);
+  a.nextPos.add(mtd);
 
   float impactSpeed = dot(sub(a.vel, b.vel), dPos);
-
   a.heat += abs(impactSpeed) * 0.1;
-  b.heat += abs(impactSpeed) * 0.1;
 
   Vector force = mult(dPos, impactSpeed * restitution);
-  a.vel.sub(force);
-  b.vel.add(force);
+  a.nextVel.sub(force);
 }
