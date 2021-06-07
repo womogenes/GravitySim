@@ -9,17 +9,24 @@ void gravity() {
 // Naive
 void _gravity() {
   for (Particle a : particles) {
+    a.nextVel = a.vel.copy();
     for (Particle b : particles) {
-      a.vel.sub(gravityAcc(a.pos, b.pos, mass));
-      b.vel.sub(gravityAcc(b.pos, a.pos, mass));
+      if (a == b) continue;
+      Vector acc = gravityAcc(b.pos, a.pos, mass);
+
+      a.nextVel.add(acc);
     }
+  }
+
+  for (Particle p : particles) {
+    p.vel = p.nextVel;
   }
 }
 
+// Acceleration due to the gravity exerted by a on b
 Vector gravityAcc(Vector a, Vector b, float m_b) {
-  if (a.equals(b)) return new Vector(0, 0);
-  return mult(sub(a, b), G * m_b / (distSquared(a, b) * (float) Math.sqrt(distSquared(a, b) + 1)) * dt);
-  //return mult(sub(a, b), G * m_b / (distSquared(a, b)));
+  return mult(sub(a, b), dt * G * m_b / (distSquared(a, b) * (float) Math.sqrt(dist(a, b))));
+  //return mult(sub(a, b), dt * G * m_b / (distSquared(a, b)));
 }
 
 void gravitate(Particle p, TreeNode tn) {

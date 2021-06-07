@@ -31,11 +31,11 @@ TreeNode root;
 void setup() {
   // Config
   N = 0;
-  r = 5;
-  mass = 5;
-  G = 0.1; // Gravitational constant
-  theta = 0.7; // Constant used for Barnes-Hut
-  restitution = 0.9;
+  r = 2;
+  mass = 1;
+  G = 0.01; // Gravitational constant
+  theta = 0.5; // Constant used for Barnes-Hut
+  restitution = 0.1;
   initBounds = width / 2;
   initVel = 0.1;
   dt = 1;

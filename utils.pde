@@ -18,6 +18,10 @@ Vector mult(Vector a, float scalar) {
   return new Vector(a.x * scalar, a.y * scalar);
 }
 
+Vector normalize(Vector a) {
+  return mult(a, invSqrt(a.magSquared()));
+}
+
 float dot(Vector a, Vector b) {
   return a.x * b.x + a.y * b.y;
 }

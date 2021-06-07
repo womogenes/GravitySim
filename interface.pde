@@ -15,7 +15,7 @@ void insertSquare(Vector center, float size, Vector vel) {
 void insertSquare() {
   insertSquare(
     insertStart,
-    0.1,
+    20,
     mult(sub(screenToSpace(mouseX, mouseY), insertStart), 0.01)
   );
   insertStart = null;

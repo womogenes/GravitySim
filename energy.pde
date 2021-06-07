@@ -1,11 +1,11 @@
 float totalKineticEnergy() {
   float total = 0;
-  for (Particle p : particles) { total += kineticEnergy(p); }
-  return total;
+  for (Particle p : particles) { total += twiceKineticEnergy(p); }
+  return 2 * total;
 }
 
-float kineticEnergy(Particle p) {
-  return 0.5 * mass * p.vel.magSquared();
+float twiceKineticEnergy(Particle p) {
+  return mass * p.vel.magSquared();
 }
 
 Vector totalMomentum() {
