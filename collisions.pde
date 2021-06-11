@@ -30,14 +30,17 @@ void collide(Particle p, TreeNode tn) {
   }
 }
 
+// From https://stackoverflow.com/questions/345838/ball-to-ball-collision-detection-and-handling
 void collide(Particle a, Particle b, float dist) {
   if (dist > 2 * r) return;
 
   Vector dPos = sub(a.pos, b.pos);
   dPos.normalize();
 
-  // Push-pull them apart
-  Vector mtd = mult(dPos, r - dist / 2);
+  // Push-pull them apart (mtd stands for "minimum translation distance")
+  float invHeatA = 1 / (a.heat + 1);
+  float invHeatB = 1 / (b.heat + 1);
+  Vector mtd = mult(dPos, (2 * r - dist) * invHeatA / (invHeatA + invHeatB));
   a.nextPos.add(mtd);
 
   float impactSpeed = dot(sub(a.vel, b.vel), dPos);

@@ -8,12 +8,14 @@ void gravity() {
 
 // Naive
 void _gravity() {
+  for (Particle p : particles) {
+    p.nextVel = p.vel.copy();
+  }
+
   for (Particle a : particles) {
-    a.nextVel = a.vel.copy();
     for (Particle b : particles) {
       if (a == b) continue;
       Vector acc = gravityAcc(b.pos, a.pos, mass);
-
       a.nextVel.add(acc);
     }
   }
@@ -25,7 +27,11 @@ void _gravity() {
 
 // Acceleration due to the gravity exerted by a on b
 Vector gravityAcc(Vector a, Vector b, float m_b) {
-  return mult(sub(a, b), dt * G * m_b / (distSquared(a, b) * (float) Math.sqrt(dist(a, b))));
+  float dSq = distSquared(a, b);
+  if (dSq <= 4 * r * r) {
+    return new Vector(0, 0);
+  }
+  return mult(sub(a, b), dt * G * m_b / (dSq * (float) Math.sqrt(dSq)));
   //return mult(sub(a, b), dt * G * m_b / (distSquared(a, b)));
 }
 
