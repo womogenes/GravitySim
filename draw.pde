@@ -15,7 +15,7 @@ void draw() {
   gravity();
 
   // Collisions
-  collide();
+  //collide();
 
   // Display
   display();

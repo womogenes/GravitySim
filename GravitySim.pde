@@ -43,6 +43,7 @@ void setup() {
   // Graphics
   size(800, 800, P2D);
   frameRate(240);
+  colorMode(HSB, 255);
   noFill();
   stroke(255);
   strokeWeight(2 * r); //noStroke();
