@@ -19,7 +19,7 @@ class Particle {
   }
 
   void display() {
-    stroke(color(0, 0, 255, 128));
+    stroke(#ffffff);
     point(pos.x, pos.y);
   }
 }

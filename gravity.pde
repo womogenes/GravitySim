@@ -31,7 +31,7 @@ Vector gravityAcc(Vector a, Vector b, float m_b) {
   if (dSq <= 4 * r * r) {
     return new Vector(0, 0);
   }
-  return mult(sub(a, b), dt * G * m_b / (dSq * (float) Math.sqrt(dSq)));
+  return mult(sub(a, b), dt * G * m_b / (dSq * (float) Math.sqrt(dSq + 1)));
   //return mult(sub(a, b), dt * G * m_b / (distSquared(a, b)));
 }
 

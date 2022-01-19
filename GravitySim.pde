@@ -30,14 +30,14 @@ TreeNode root;
 
 void setup() {
   // Config
-  N = 0;
+  N = 2000;
   r = 2;
   mass = 1;
-  G = 0.01; // Gravitational constant
-  theta = 0.7; // Constant used for Barnes-Hut
+  G = 1; // Gravitational constant
+  theta = 0.3; // Constant used for Barnes-Hut
   restitution = 0.2;
-  initBounds = width / 2;
-  initVel = 0.1;
+  initBounds = width / 4;
+  initVel = 20;
   dt = 1;
 
   // Graphics
@@ -49,8 +49,6 @@ void setup() {
   strokeWeight(2 * r); //noStroke();
   textAlign(LEFT, BOTTOM);
   textSize(24);
-
-  circle = createShape(ELLIPSE, 0, 0, 2 * r, 2 * r);
 
   // Camera
   tox = width / 2;
@@ -69,11 +67,24 @@ void setup() {
   // Variables
   particles = new ArrayList(3000);
   for (int i = 0; i < N; i++) {
-    particles.add(
-      new Particle(
-        new Vector(random(-initBounds, initBounds), random(-initBounds, initBounds)),
-        new Vector(random(-initVel, initVel), random(-initVel, initVel))
-      )
+    float angle = random(0, TWO_PI);
+    float dist = random(0, initBounds);
+
+    Vector pos = new Vector(
+      dist * cos(angle),
+      dist * sin(angle)
     );
+
+    float mag = dist * 0.02;
+    Vector vel = new Vector(
+      mag * cos(angle + PI / 2),
+      mag * sin(angle + PI / 2)
+    );
+
+    particles.add(new Particle(pos, vel));
   }
+
+  /* for (int i = 0; i < 100; i++) {
+    particles.add(new Particle(0, 0));
+  } */
 }
