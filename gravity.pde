@@ -1,8 +1,12 @@
 // Gravity algorithm
 // Blank for now
 void gravity() {
-  for (Particle p : particles) {
-    gravitate(p, root);
+  for (int i = 0; i < N; i++) {
+    for (int j = i + 1; j < N; j++) {
+      Vector a_g = gravityAcc(particles.get(j).pos, particles.get(i).pos, mass);
+      particles.get(i).vel.add(a_g);
+      particles.get(j).vel.sub(a_g);
+    }
   }
 }
 
