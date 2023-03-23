@@ -19,7 +19,7 @@ void mouseWheel(MouseEvent event) {
     toy -= dzoom * (mouseY - toy);
     tozoom *= dzoom + 1;
 
-  } else {
+  } else if (e > 0) {
     tox += dzoom / (dzoom + 1) * (mouseX - tox); 
     toy += dzoom / (dzoom + 1) * (mouseY - toy);
     tozoom /= dzoom + 1;
