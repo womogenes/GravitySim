@@ -34,7 +34,7 @@ void setup() {
   r = 2;
   mass = 1;
   G = 1; // Gravitational constant
-  theta = 0.3; // Constant used for Barnes-Hut
+  theta = 0.7; // Constant used for Barnes-Hut
   restitution = 0.2;
   initBounds = width / 4;
   initVel = 20;
